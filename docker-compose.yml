@@ -1,0 +1,18 @@
+version: "3"
+services:
+  logstash:
+    build: ./logstash/
+    volumes:
+      - /var/log/nginx/:/var/log/nginx
+  elasticsearch:
+    image: elasticsearch
+    links:
+      - logstash
+    ports:
+      - "9200:9200"
+  kibana:
+    image: kibana
+    links:
+      - elasticsearch
+    ports:
+      - "5601:5601"
