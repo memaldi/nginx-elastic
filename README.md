@@ -12,6 +12,12 @@ log_format timed_combined '$remote_addr - $remote_user [$time_local] '
 
 access_log /var/log/nginx/access.log timed_combined;
 ```
+* Make logs readable for everyone:
+
+```
+$ sudo chmod a+r /var/log/nginx/access.log
+```
+
 * Launch the docker-compose script:
 
 ```
